@@ -5,6 +5,7 @@ import config from "../config";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const globalErrorHandler = async (
+	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 	err: any,
 	_req: Request,
 	res: Response,
