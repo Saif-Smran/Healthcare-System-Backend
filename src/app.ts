@@ -12,7 +12,7 @@ import { globalErrorHandler } from "./app/middleware/globalErrorHandler";
 import { notFound } from "./app/middleware/notFound";
 import { AuthRoutes } from "./app/module/auth/auth.route";
 import crypto from "crypto";
-import { redisClient } from "./app/lib/redis";
+// import { redisClient } from "./app/lib/redis";
 // import * as z from "zod";
 
 const app: Application = express();
