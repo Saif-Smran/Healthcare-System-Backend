@@ -11,7 +11,9 @@ import config from "./app/config";
 import { globalErrorHandler } from "./app/middleware/globalErrorHandler";
 import { notFound } from "./app/middleware/notFound";
 import { AuthRoutes } from "./app/module/auth/auth.route";
-import * as z from "zod";
+import crypto from "crypto";
+import { redisClient } from "./app/lib/redis";
+// import * as z from "zod";
 
 const app: Application = express();
 
@@ -31,40 +33,66 @@ app.use(cookieParser());
 
 app.use("/api/v1/auth", AuthRoutes);
 
-app.post("/zod", async (req: Request, res: Response, next: NextFunction) => {
+// app.post("/zod", async (req: Request, res: Response, next: NextFunction) => {
+
+// 	try {
+// 		const UserZodSchema = z.object({
+// 			name: z.string().endsWith("r"),
+// 			email: z.email(),
+// 			age: z.number().optional(),
+// 			isVerified: z.boolean().optional(),
+// 			books: z.array(z.string()).optional()
+// 		})
+
+
+// 		const payload = req.body;
+
+// 		const result = UserZodSchema.safeParse(payload)
+
+// 		if (!result.success) {
+// 			console.log(result.error);
+// 		}
+// 		if (result.success) {
+// 			console.log(result.data);
+// 		}
+
+
+// 		res.status(httpStatus.OK).json({
+// 			success: true,
+// 			message: "Welcome to PH Healthcare System Backend",
+// 			data: result
+// 		});
+// 	} catch (error) {
+// 		console.log(error);
+// 		next(error)
+// 	}
+// })
+
+app.get("/test", async (req: Request, res: Response, next : NextFunction) => {
 
 	try {
-		const UserZodSchema = z.object({
-			name: z.string().endsWith("r"),
-			email: z.email(),
-			age: z.number().optional(),
-			isVerified: z.boolean().optional(),
-			books: z.array(z.string()).optional()
-		})
 
+		// 100000 > 999999 > 1000000
+			const otp : number = crypto.randomInt(100000, 1000000) // 1, 2, 3, 4, 5, 6,7,8 ,9, 10 => X-11
+		
+			// await redisClient.set("forgot-password-otp:patient1@gmail.com", `${otp}`, {
+			// 	EX: 60,
+			// });
 
-		const payload = req.body;
-
-		const result = UserZodSchema.safeParse(payload)
-
-		if (!result.success) {
-			console.log(result.error);
-		}
-		if (result.success) {
-			console.log(result.data);
-		}
+		
 
 
 		res.status(httpStatus.OK).json({
 			success: true,
 			message: "Welcome to PH Healthcare System Backend",
-			data: result
+			data : otp
 		});
 	} catch (error) {
 		console.log(error);
 		next(error)
 	}
 })
+
 
 
 // Basic route
