@@ -1,6 +1,6 @@
 import z from "zod";
 
-const PatientRegistrationZodSchema = z.object({
+ const PatientRegistrationZodSchema = z.object({
     name: z.string("Not A String!!!!!").min(3, "Name must atleast 3 characters long!!!").max(10),
     email: z.email("Not email!!"),
     password: z.string()
@@ -14,9 +14,15 @@ const PatientRegistrationZodSchema = z.object({
         contactNumber: z.string().optional()
     }).optional()
 })
+ const PatientEmailVerifyZodSchema = z.object({
+    
+    email: z.email("Not email!!"),
+     otp: z.string().length(6)
+   
+})
 
 const LoginZodSchema = z.object({
-    email: z.email(),
+    email : z.email(),
     password: z.string()
         .min(8, "Password Must Minimum 8 Characters Long.")
         .regex(/[a-z]/, "Password must contain atleast 1 Lowercase Letter")
@@ -44,6 +50,7 @@ const ResetPasswordZodSchema = z.object({
 
 export const UserValidation = {
     PatientRegistrationZodSchema,
+    PatientEmailVerifyZodSchema,
     LoginZodSchema,
     ForgotPasswordZodSchema,
     ResetPasswordZodSchema
