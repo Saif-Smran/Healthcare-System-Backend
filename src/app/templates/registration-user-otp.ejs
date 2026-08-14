@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verification OTP - PH Healthcare</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f4f6f9; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; -webkit-font-smoothing: antialiased;">
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f4f6f9; padding: 40px 0;">
+        <tr>
+            <td align="center">
+                <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 560px; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); border: 1px solid #e2e8f0;">
+                    
+                    <!-- Header -->
+                    <tr>
+                        <td style="background: linear-gradient(135deg, #0e7490 0%, #155e75 100%); padding: 32px 40px; text-align: center;">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td align="center">
+                                        <div style="display: inline-block; background-color: rgba(255, 255, 255, 0.15); width: 48px; height: 48px; border-radius: 10px; line-height: 48px; font-size: 24px; color: #ffffff; margin-bottom: 12px;">
+                                            🏥
+                                        </div>
+                                        <h1 style="color: #ffffff; margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -0.5px;">PH Healthcare System</h1>
+                                        <p style="color: #cff4fc; margin: 4px 0 0 0; font-size: 13px;">Email Verification Code</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Body Content -->
+                    <tr>
+                        <td style="padding: 40px;">
+                            <h2 style="color: #0f172a; font-size: 18px; margin: 0 0 16px 0; font-weight: 600;">Hello <%= typeof name !== 'undefined' && name ? name : 'User' %>,</h2>
+                            <p style="color: #475569; font-size: 14px; line-height: 1.6; margin: 0 0 24px 0;">
+                                Thank you for registering with PH Healthcare System. Please use the One-Time Verification Code (OTP) below to verify your email address and complete your account creation:
+                            </p>
+
+                            <!-- OTP Box -->
+                            <div style="background-color: #f0f9ff; border: 2px dashed #0284c7; border-radius: 10px; padding: 24px; text-align: center; margin-bottom: 24px;">
+                                <span style="display: block; color: #0369a1; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px;">One-Time Verification Code</span>
+                                <span style="display: block; color: #0f172a; font-size: 36px; font-weight: 800; letter-spacing: 8px; font-family: 'Courier New', Courier, monospace;"><%= typeof otp !== 'undefined' ? otp : '' %></span>
+                                <span style="display: inline-block; background-color: #e0f2fe; color: #0369a1; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-top: 12px;">
+                                    ⏱️ Expires in <%= typeof expirationMinutes !== 'undefined' ? expirationMinutes : 5 %> minutes
+                                </span>
+                            </div>
+
+                            <p style="color: #475569; font-size: 13px; line-height: 1.5; margin: 0 0 20px 0;">
+                                If you did not initiate this registration request, please ignore this email.
+                            </p>
+
+                            <!-- Security Warning -->
+                            <div style="background-color: #fffbebf5; border-left: 4px solid #f59e0b; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-bottom: 24px;">
+                                <p style="color: #92400e; font-size: 12px; line-height: 1.5; margin: 0;">
+                                    <strong>Security Tip:</strong> Never share your OTP with anyone. PH Healthcare staff will never ask for your verification code or password.
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td style="background-color: #f8fafc; padding: 24px 40px; text-align: center; border-top: 1px solid #e2e8f0;">
+                            <p style="color: #94a3b8; font-size: 12px; margin: 0 0 6px 0;">
+                                &copy; <%= typeof year !== 'undefined' ? year : new Date().getFullYear() %> PH Healthcare System. All rights reserved.
+                            </p>
+                            <p style="color: #cbd5e1; font-size: 11px; margin: 0;">
+                                This is an automated notification. Please do not reply to this email.
+                            </p>
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
