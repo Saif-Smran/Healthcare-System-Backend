@@ -13,6 +13,7 @@ import { notFound } from "./app/middleware/notFound";
 import { AuthRoutes } from "./app/module/auth/auth.route";
 import crypto from "crypto";
 import { UserRoutes } from "./app/module/user/user.route";
+import { AppointementRoutes } from "./app/module/appointment/appointment.route";
 // import { redisClient } from "./app/lib/redis";
 // import * as z from "zod";
 
@@ -34,6 +35,7 @@ app.use(cookieParser());
 
 app.use("/api/v1/auth", AuthRoutes);
 app.use("/api/v1/user", UserRoutes);
+app.use("/api/v1/appointment", AppointementRoutes);
 
 // app.post("/zod", async (req: Request, res: Response, next: NextFunction) => {
 
